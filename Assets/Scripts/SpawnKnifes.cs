@@ -6,8 +6,12 @@ using UnityEngine.InputSystem;
 public class SpawnKnifes : MonoBehaviour
 {
     public GameObject shuriken;
+    public GameObject kunai;
     public Transform leftHand;
     public Transform rightHand;
+
+    private GameObject temp_shuriken;
+    private GameObject temp_kunai;
 
     //Se llama cuando se presiona el boton que esta abajo del gatillo izquierdo
     public void LeftGrip(InputAction.CallbackContext context)
@@ -15,12 +19,13 @@ public class SpawnKnifes : MonoBehaviour
         if(context.started)
         {
             //Logica cuando se presiona por primera vez el boton
-            GameObject temp_shuriken = Instantiate(shuriken, leftHand);
+            temp_shuriken = Instantiate(shuriken, leftHand);
         }
 
         if(context.canceled)
         {
             //Logica cuando se deja de presionar el boton
+            Destroy(temp_shuriken);
         }
     }
 
@@ -30,11 +35,13 @@ public class SpawnKnifes : MonoBehaviour
         if (context.started)
         {
             //Logica cuando se presiona por primera vez el boton
+            temp_kunai = Instantiate(kunai, leftHand);
         }
 
         if (context.canceled)
         {
             //Logica cuando se deja de presionar el boton
+            Destroy(temp_kunai);
         }
     }
 
@@ -44,11 +51,13 @@ public class SpawnKnifes : MonoBehaviour
         if (context.started)
         {
             //Logica cuando se presiona por primera vez el boton
+            temp_shuriken = Instantiate(shuriken, rightHand);
         }
 
         if (context.canceled)
         {
             //Logica cuando se deja de presionar el boton
+            Destroy(temp_shuriken);
         }
     }
 
@@ -58,11 +67,13 @@ public class SpawnKnifes : MonoBehaviour
         if (context.started)
         {
             //Logica cuando se presiona por primera vez el boton
+            temp_kunai = Instantiate(kunai, rightHand);
         }
 
         if (context.canceled)
         {
             //Logica cuando se deja de presionar el boton
+            Destroy(temp_kunai);
         }
     }
 }
