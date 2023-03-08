@@ -73,7 +73,7 @@ public class SpawnKnifes : MonoBehaviour
         if (context.canceled)
         {
             //Logica cuando se deja de presionar el boton
-            Destroy(temp_kunai);
+            //Destroy(temp_kunai);
         }
     }
 }
