@@ -107,9 +107,10 @@ GameObject:
   - component: {fileID: 5615497917579445399}
   - component: {fileID: 567567960891519441}
   - component: {fileID: 7697910185664746649}
-  m_Layer: 0
+  - component: {fileID: 4430600298693677199}
+  m_Layer: 3
   m_Name: training_dummy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +130,7 @@ Transform:
   - {fileID: 8033125610158513919}
   - {fileID: 334251544987690374}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5615497917579445399
 Animator:
@@ -190,6 +191,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66b7a1182d1b634ba65ff0136622e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &4430600298693677199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697017240656324050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.82, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6774080502169825540
 GameObject:
   m_ObjectHideFlags: 0
