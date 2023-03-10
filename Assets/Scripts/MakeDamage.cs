@@ -8,7 +8,7 @@ public class MakeDamage : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<TakeDamage>(out TakeDamage enemy))
         {
-            print("Hacer daño");
+            enemy.takeDamage?.Invoke();
         }
     }
 }
