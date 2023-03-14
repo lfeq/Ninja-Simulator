@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: de09506451a806b46a6865eb5dee759b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - a Asian Ninja
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 413dc452f6d2c694ab9698b57f267d88, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
