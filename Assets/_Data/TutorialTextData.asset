@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saludo: Hola, bienenido a Ninja Sim
   instrucciones: Agarra los cuchillos y lanzalos a los objetivos que tienes enfrente
-  textosMotivacionales: []
+  textosMotivacionales:
+  - Sigue asi!!!!!
   "textosRega\xF1o": []

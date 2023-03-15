@@ -12,11 +12,16 @@ public class TutorialManager : MonoBehaviour
     [Header("Sensei Data")]
     [SerializeField] private TMP_Text senseiText;
     [SerializeField] private AudioSource senseiAudioSource;
+    [SerializeField] private GameObject senseiTextBubble;
     [SerializeField] private TextData textData;
     [SerializeField] private float showTextDurationInSeconds = 2;
+    [SerializeField] private float typeEffectSpeed = 0.3f;
+
+    private TypeWriterEffect writerEffect;
 
     private void Start()
     {
+        writerEffect= new TypeWriterEffect();
         StartCoroutine(StartTutorial());
     }
 
@@ -30,10 +35,40 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator StartTutorial()
     {
-        senseiAudioSource.Play();
+        StartShowingText();
+
         yield return StartCoroutine(ShowText(textData.saludo));
         yield return StartCoroutine(ShowText(textData.instrucciones));
+
+        StopShowingText();
+    }
+
+    public void CongratulationText()
+    {
+        StartCoroutine(ShowCongratulationText(textData.GetRandomCongratulationText()));
+    }
+
+    private IEnumerator ShowCongratulationText(string text)
+    {
+        StartShowingText();
+
+        yield return ShowText(text);
+       
+        StopShowingText();
+    }
+
+    private void StartShowingText()
+    {
+        senseiTextBubble.SetActive(true);
+        SenseiAnimationManager.OnStartTalking.Invoke();
+        senseiAudioSource.Play();
+    }
+
+    private void StopShowingText()
+    {
         senseiAudioSource.Stop();
+        SenseiAnimationManager.OnStopTalking.Invoke();
+        senseiTextBubble.SetActive(false);
     }
 
     private void EndTutorial()
@@ -43,7 +78,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator ShowText(string text)
     {
-        senseiText.text = text;
+        yield return writerEffect.TypeText(senseiText, text, typeEffectSpeed);
         yield return new WaitForSeconds(showTextDurationInSeconds);
     }
 }
