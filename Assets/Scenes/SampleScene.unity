@@ -633,6 +633,21 @@ MonoBehaviour:
   textData: {fileID: 11400000, guid: 4187f492784af8046b53f2c7f6cbcfe3, type: 2}
   showTextDurationInSeconds: 5
   typeEffectSpeed: 0.1
+  endTutorial:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 777016442}
+        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
+        m_MethodName: EndTutorialText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!4 &777016443
 Transform:
   m_ObjectHideFlags: 0
