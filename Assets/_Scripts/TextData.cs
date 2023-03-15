@@ -11,6 +11,8 @@ public class TextData : ScriptableObject
     public string[] textosMotivacionales;
     public string[] textosRegaño;
 
+    public string despedida;
+
     public string GetRandomCongratulationText()
     {
         return textosMotivacionales[Random.Range(0, textosMotivacionales.Length)];

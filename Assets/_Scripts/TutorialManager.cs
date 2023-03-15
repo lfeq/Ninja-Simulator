@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private float typeEffectSpeed = 0.3f;
 
     private TypeWriterEffect writerEffect;
+
+    [Header("Comportamiento al terminar el nivel")]
+    public UnityEvent endTutorial;
 
     private void Start()
     {
@@ -48,6 +52,20 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ShowCongratulationText(textData.GetRandomCongratulationText()));
     }
 
+    public void EndTutorialText()
+    {
+        StartCoroutine(ShowEndTutorialText(textData.despedida));
+    }
+
+    private IEnumerator ShowEndTutorialText(string text)
+    {
+        StartShowingText();
+
+        yield return StartCoroutine(ShowText(text));
+
+        StopShowingText();
+    }
+
     private IEnumerator ShowCongratulationText(string text)
     {
         StartShowingText();
@@ -73,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
     private void EndTutorial()
     {
-        //Codigo para terminar el tutorial
+        endTutorial.Invoke();
     }
 
     IEnumerator ShowText(string text)
