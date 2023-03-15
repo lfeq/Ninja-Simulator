@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Formulas
@@ -46,6 +47,24 @@ public class Formulas
     public Vector3 MovePos(Vector3 inicialPos, Vector3 distanceToMove)
     {
         return inicialPos + distanceToMove;
+    }
+
+    public Vector3 MoveToPosition(Vector3 currentPosition, Vector3 targetPosition, float speed, out bool isInTarget)
+    {
+        isInTarget = false;
+        Vector3 vector3Distance = targetPosition - currentPosition;
+
+        float distance = Distance(currentPosition, targetPosition);
+
+        if(distance <= 0.1f)
+        {
+            isInTarget = true;
+            return targetPosition;
+        }
+
+        Vector3 normalizedDistasnce = Normalizar(vector3Distance);
+
+        return currentPosition + normalizedDistasnce * speed;
     }
 
     public Vector3 RotarEnX(Vector3 inicialPos, float angle)
