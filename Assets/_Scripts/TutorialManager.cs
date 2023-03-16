@@ -23,6 +23,10 @@ public class TutorialManager : MonoBehaviour
     [Header("Comportamiento al terminar el nivel")]
     public UnityEvent endTutorial;
 
+    [Header("Player Data")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform newPlayerPosition;
+
     private void Start()
     {
         writerEffect= new TypeWriterEffect();
@@ -73,6 +77,8 @@ public class TutorialManager : MonoBehaviour
         yield return ShowText(text);
        
         StopShowingText();
+
+        player.position = newPlayerPosition.position;
     }
 
     private void StartShowingText()
