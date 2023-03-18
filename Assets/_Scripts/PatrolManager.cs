@@ -47,4 +47,9 @@ public class PatrolManager : MonoBehaviour
                 isMovingForward = true;
         }
     }
+
+    public void StopMoving()
+    {
+        movementSpeed = 0;
+    }
 }

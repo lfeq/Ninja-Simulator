@@ -16,4 +16,9 @@ public class TrainingDummyAnimationManager : MonoBehaviour
     {
         anim.SetTrigger("TakeDamage");
     }
+
+    public void PlayDeadAnimation()
+    {
+        anim.SetTrigger("Dead");
+    }
 }
