@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Formulas
@@ -12,6 +9,11 @@ public class Formulas
         float z = Mathf.Pow((b.z - a.z), 2); // Restar z_b - z_a y elevarlo al cuadrado
 
         return Mathf.Sqrt(x + y + z);
+    }
+    
+    public Vector3 Direccion(Vector3 a, Vector3 b)
+    {
+        return b - a;
     }
 
     public float Magnitud(Vector3 a)
