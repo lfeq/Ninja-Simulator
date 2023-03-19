@@ -23,4 +23,9 @@ public class KnifeBehaviour : MonoBehaviour
     {
         RespawnShurikens.OnThrowShuriken.Invoke();
     }
+
+    public void OnThrowBomb()
+    {
+        RespawnShurikens.OnThrowBomb.Invoke();
+    }
 }

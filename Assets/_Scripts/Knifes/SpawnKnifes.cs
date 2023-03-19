@@ -7,6 +7,7 @@ public class SpawnKnifes : MonoBehaviour
 {
     public GameObject shuriken;
     public GameObject kunai;
+    public GameObject Bomb;
     public Transform leftHand;
     public Transform rightHand;
 
