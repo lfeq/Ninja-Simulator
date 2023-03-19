@@ -18,4 +18,9 @@ public class TextData : ScriptableObject
     {
         return textosMotivacionales[Random.Range(0, textosMotivacionales.Length)];
     }
+
+    public string GetRandomShameText()
+    {
+        return textosRegaño[Random.Range(0, textosMotivacionales.Length)];
+    }
 }

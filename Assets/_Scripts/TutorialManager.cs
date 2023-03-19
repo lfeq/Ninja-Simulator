@@ -53,6 +53,11 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(ShowCongratulationText(textData.GetRandomCongratulationText()));
     }
 
+    public void ShameText()
+    {
+        StartCoroutine(ShowCongratulationText(textData.GetRandomShameText()));
+    }
+
     public void EndTutorialText()
     {
         StartCoroutine(ShowEndTutorialText(textData.despedida));
