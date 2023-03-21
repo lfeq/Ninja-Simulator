@@ -15,15 +15,17 @@ public class SenseinMovementManager : MonoBehaviour
     void Start()
     {
         formulas = new Formulas();
-        Vector3 direction = formulas.Direccion(transform.position, playerPosition.position);
-        float angulo = direction.z / direction.x;
-        float ang = Mathf.Atan(angulo);
+        
+        LookAtPlayer();
 
-        //usamos trigonomeria
-        print(angulo);
-        print(ang);
 
-        print(formulas.RotarEnY(transform.position, ang));
+        //float productoPunto = formulas.ProductoPunto(transform.position, playerPosition.position);
+        //float magA = formulas.Magnitud(transform.position);
+        //float magB = formulas.Magnitud(playerPosition.position);
+
+        //float angulo = Mathf.Acos(productoPunto / (magA * magB));
+        //angulo = angulo * Mathf.Rad2Deg;
+        //print(angulo);
     }
 
     public void ChangePosition()
@@ -38,6 +40,6 @@ public class SenseinMovementManager : MonoBehaviour
 
     public void LookAtPlayer()
     {
-        transform.LookAt(playerPosition.position);
+        transform.rotation = Quaternion.Euler(formulas.VerObjeto(transform.position, playerPosition.position));
     }
 }
