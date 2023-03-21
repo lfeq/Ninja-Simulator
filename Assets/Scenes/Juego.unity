@@ -25056,8 +25056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc09832701c3dd9419fa0f2dcf8132cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gametimeInMinutes: 0
-  maxEnemies: 0
+  gametimeInMinutes: 5
+  maxEnemies: 6
 --- !u!4 &922699525
 Transform:
   m_ObjectHideFlags: 0

@@ -16,9 +16,14 @@ public class SenseinMovementManager : MonoBehaviour
     {
         formulas = new Formulas();
         Vector3 direction = formulas.Direccion(transform.position, playerPosition.position);
-        Vector3 pc = formulas.ProductoCruz(transform.position, direction);
+        float angulo = direction.z / direction.x;
+        float ang = Mathf.Atan(angulo);
 
-        print(pc);
+        //usamos trigonomeria
+        print(angulo);
+        print(ang);
+
+        print(formulas.RotarEnY(transform.position, ang));
     }
 
     public void ChangePosition()
