@@ -11,10 +11,19 @@ public class TextData : ScriptableObject
     public string[] textosMotivacionales;
     public string[] textosRegaño;
 
+    [TextArea(3, 2)]
     public string despedida;
+    [TextArea(3, 2)]
+    public string instruccionesJuego;
+
 
     public string GetRandomCongratulationText()
     {
         return textosMotivacionales[Random.Range(0, textosMotivacionales.Length)];
+    }
+
+    public string GetRandomShameText()
+    {
+        return textosRegaño[Random.Range(0, textosMotivacionales.Length)];
     }
 }

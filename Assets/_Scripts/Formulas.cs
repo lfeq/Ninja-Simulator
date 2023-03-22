@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Formulas
@@ -12,6 +9,11 @@ public class Formulas
         float z = Mathf.Pow((b.z - a.z), 2); // Restar z_b - z_a y elevarlo al cuadrado
 
         return Mathf.Sqrt(x + y + z);
+    }
+    
+    public Vector3 Direccion(Vector3 a, Vector3 b)
+    {
+        return b - a;
     }
 
     public float Magnitud(Vector3 a)
@@ -92,5 +94,15 @@ public class Formulas
         float z = (0 * inicialPos.x) + (0 * inicialPos.y) + (1 * inicialPos.z);
 
         return new Vector3(x, y, z);
+    }
+
+    public Vector3 VerObjeto(Vector3 inicialPos, Vector3 target)
+    {
+        Vector3 direction = Direccion(inicialPos, target);
+        float catetoOpuestoSobreCatetoAdyacente = direction.z / direction.x;
+        float angulo = Mathf.Atan(catetoOpuestoSobreCatetoAdyacente);
+        angulo = angulo * Mathf.Rad2Deg;
+
+        return new Vector3(0, angulo + 180, 0);
     }
 }

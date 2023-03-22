@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
@@ -11,22 +10,31 @@ public class TutorialManager : MonoBehaviour
     private int currentHits = 0;
 
     [Header("Sensei Data")]
+    [SerializeField] private Transform senseiObject;
+    [SerializeField] private Transform senseiNewPosition;
     [SerializeField] private TMP_Text senseiText;
     [SerializeField] private AudioSource senseiAudioSource;
     [SerializeField] private GameObject senseiTextBubble;
     [SerializeField] private TextData textData;
     [SerializeField] private float showTextDurationInSeconds = 2;
     [SerializeField] private float typeEffectSpeed = 0.3f;
+    private bool isShowingText = false;
 
     private TypeWriterEffect writerEffect;
 
     [Header("Comportamiento al terminar el nivel")]
     public UnityEvent endTutorial;
 
+    [Header("Player Data")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform newPlayerPosition;
+    [SerializeField] private ParticleSystem playerSmokeParticle;
+
     private void Start()
     {
         writerEffect= new TypeWriterEffect();
-        StartCoroutine(StartTutorial());
+        string[] tutorialTexts = new string[2] { textData.saludo, textData.instrucciones};
+        StartCoroutine(ShowText(tutorialTexts));
     }
 
     public void AddHit()
@@ -37,49 +45,32 @@ public class TutorialManager : MonoBehaviour
             EndTutorial();
     }
 
-    IEnumerator StartTutorial()
-    {
-        StartShowingText();
-
-        yield return StartCoroutine(ShowText(textData.saludo));
-        yield return StartCoroutine(ShowText(textData.instrucciones));
-
-        StopShowingText();
-    }
-
     public void CongratulationText()
     {
-        StartCoroutine(ShowCongratulationText(textData.GetRandomCongratulationText()));
+        string[] texts = new string[1] { textData.GetRandomCongratulationText() };
+        StartCoroutine(ShowText(texts));
+    }
+
+    public void ShameText()
+    {
+        string[] texts = new string[1] { textData.GetRandomShameText() };
+        StartCoroutine(ShowText(texts));
     }
 
     public void EndTutorialText()
     {
-        StartCoroutine(ShowEndTutorialText(textData.despedida));
-    }
-
-    private IEnumerator ShowEndTutorialText(string text)
-    {
-        StartShowingText();
-
-        yield return StartCoroutine(ShowText(text));
-
-        StopShowingText();
-    }
-
-    private IEnumerator ShowCongratulationText(string text)
-    {
-        StartShowingText();
-
-        yield return ShowText(text);
-       
-        StopShowingText();
+        string[] texts = new string[1] { textData.despedida };
+        StartCoroutine(ShowText(texts, true));
     }
 
     private void StartShowingText()
     {
-        senseiTextBubble.SetActive(true);
-        SenseiAnimationManager.OnStartTalking.Invoke();
-        senseiAudioSource.Play();
+        if(!isShowingText)
+        {
+            senseiTextBubble.SetActive(true);
+            SenseiAnimationManager.OnStartTalking.Invoke();
+            senseiAudioSource.Play();
+        }     
     }
 
     private void StopShowingText()
@@ -87,16 +78,39 @@ public class TutorialManager : MonoBehaviour
         senseiAudioSource.Stop();
         SenseiAnimationManager.OnStopTalking.Invoke();
         senseiTextBubble.SetActive(false);
+        isShowingText = false;
     }
 
     private void EndTutorial()
     {
+        StopAllCoroutines();
+        StopShowingText();
         endTutorial.Invoke();
     }
 
-    IEnumerator ShowText(string text)
+    IEnumerator ShowText(string[] texts, bool endTutorial = false)
     {
-        yield return writerEffect.TypeText(senseiText, text, typeEffectSpeed);
-        yield return new WaitForSeconds(showTextDurationInSeconds);
+        foreach (string text in texts)
+        {
+            StartShowingText();
+            if(!isShowingText)
+            {
+                isShowingText = true;
+                yield return writerEffect.TypeText(senseiText, text, typeEffectSpeed);
+                yield return new WaitForSeconds(showTextDurationInSeconds);
+                StopShowingText();
+            }
+        }
+
+        if(endTutorial)
+        {
+            playerSmokeParticle.Play();
+            player.position = newPlayerPosition.position;
+            senseiObject.position = senseiNewPosition.position;
+            senseiObject.rotation = new Quaternion(0, 180, 0, 0);
+            SenseiAnimationManager.OnStartPointing.Invoke();
+            string[] _texts = new string[1] { textData.instruccionesJuego };
+            StartCoroutine(ShowText(_texts));
+        }
     }
 }
