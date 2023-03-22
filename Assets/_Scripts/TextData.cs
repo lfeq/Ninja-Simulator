@@ -13,6 +13,9 @@ public class TextData : ScriptableObject
 
     [TextArea(3, 2)]
     public string despedida;
+    [TextArea(3, 2)]
+    public string instruccionesJuego;
+
 
     public string GetRandomCongratulationText()
     {

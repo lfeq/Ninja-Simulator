@@ -95,4 +95,14 @@ public class Formulas
 
         return new Vector3(x, y, z);
     }
+
+    public Vector3 VerObjeto(Vector3 inicialPos, Vector3 target)
+    {
+        Vector3 direction = Direccion(inicialPos, target);
+        float catetoOpuestoSobreCatetoAdyacente = direction.z / direction.x;
+        float angulo = Mathf.Atan(catetoOpuestoSobreCatetoAdyacente);
+        angulo = angulo * Mathf.Rad2Deg;
+
+        return new Vector3(0, angulo + 180, 0);
+    }
 }
