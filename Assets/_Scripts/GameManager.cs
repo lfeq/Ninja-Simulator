@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Game Time Settings")]
     [SerializeField] private float gametimeInMinutes;
+    [SerializeField] private TMP_Text gameTimeText;
     private float gametime;
 
     [Header("Enemy Count Settings")]
     [SerializeField] private int maxEnemies;
     private int defeatedEnemies = 0;
+
+    [Header("End Game Settings")]
+    public UnityEvent winGame;
+    public UnityEvent loseGame;
 
     private void Start()
     {
@@ -25,6 +32,16 @@ public class GameManager : MonoBehaviour
     private void CountDownTime()
     {
         gametime -= Time.deltaTime;
+
+        float minutes = Mathf.FloorToInt(gametime / 60);
+        float seconds = Mathf.FloorToInt(gametime % 60);
+
+        gameTimeText.text = minutes.ToString() + ":" + seconds.ToString();
+
+        if(gametime <= 0)
+        {
+            EndGame();
+        }
     }
 
     public void DefeatEnemy()
@@ -32,11 +49,17 @@ public class GameManager : MonoBehaviour
         defeatedEnemies++;
 
         if (defeatedEnemies == maxEnemies)
-            EndGame();
+            WinGame();
     }
 
     private void EndGame()
     {
-        //Codigo para terminar juego
+        loseGame.Invoke();
+    }
+
+    private void WinGame()
+    {
+        
+        winGame.Invoke();
     }
 }
