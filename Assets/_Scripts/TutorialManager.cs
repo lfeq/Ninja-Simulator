@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
@@ -11,6 +10,8 @@ public class TutorialManager : MonoBehaviour
     private int currentHits = 0;
 
     [Header("Sensei Data")]
+    [SerializeField] private Transform senseiObject;
+    [SerializeField] private Transform senseiNewPosition;
     [SerializeField] private TMP_Text senseiText;
     [SerializeField] private AudioSource senseiAudioSource;
     [SerializeField] private GameObject senseiTextBubble;
@@ -27,11 +28,13 @@ public class TutorialManager : MonoBehaviour
     [Header("Player Data")]
     [SerializeField] private Transform player;
     [SerializeField] private Transform newPlayerPosition;
+    [SerializeField] private ParticleSystem playerSmokeParticle;
 
     private void Start()
     {
         writerEffect= new TypeWriterEffect();
-        StartCoroutine(StartTutorial());
+        string[] tutorialTexts = new string[2] { textData.saludo, textData.instrucciones};
+        StartCoroutine(ShowText(tutorialTexts));
     }
 
     public void AddHit()
@@ -42,36 +45,22 @@ public class TutorialManager : MonoBehaviour
             EndTutorial();
     }
 
-    IEnumerator StartTutorial()
-    {
-        yield return StartCoroutine(ShowText(textData.saludo));
-        yield return StartCoroutine(ShowText(textData.instrucciones));
-    }
-
     public void CongratulationText()
     {
-        StartCoroutine(ShowCongratulationText(textData.GetRandomCongratulationText()));
+        string[] texts = new string[1] { textData.GetRandomCongratulationText() };
+        StartCoroutine(ShowText(texts));
     }
 
     public void ShameText()
     {
-        StartCoroutine(ShowCongratulationText(textData.GetRandomShameText()));
+        string[] texts = new string[1] { textData.GetRandomShameText() };
+        StartCoroutine(ShowText(texts));
     }
 
     public void EndTutorialText()
     {
-        StartCoroutine(ShowEndTutorialText(textData.despedida));
-    }
-
-    private IEnumerator ShowEndTutorialText(string text)
-    {
-        yield return StartCoroutine(ShowText(text));
-        player.position = newPlayerPosition.position;
-    }
-
-    private IEnumerator ShowCongratulationText(string text)
-    {
-        yield return ShowText(text);
+        string[] texts = new string[1] { textData.despedida };
+        StartCoroutine(ShowText(texts, true));
     }
 
     private void StartShowingText()
@@ -99,15 +88,29 @@ public class TutorialManager : MonoBehaviour
         endTutorial.Invoke();
     }
 
-    IEnumerator ShowText(string text)
+    IEnumerator ShowText(string[] texts, bool endTutorial = false)
     {
-        StartShowingText();
-        if(!isShowingText)
+        foreach (string text in texts)
         {
-            isShowingText = true;
-            yield return writerEffect.TypeText(senseiText, text, typeEffectSpeed);
-            yield return new WaitForSeconds(showTextDurationInSeconds);
-            StopShowingText();
+            StartShowingText();
+            if(!isShowingText)
+            {
+                isShowingText = true;
+                yield return writerEffect.TypeText(senseiText, text, typeEffectSpeed);
+                yield return new WaitForSeconds(showTextDurationInSeconds);
+                StopShowingText();
+            }
+        }
+
+        if(endTutorial)
+        {
+            playerSmokeParticle.Play();
+            player.position = newPlayerPosition.position;
+            senseiObject.position = senseiNewPosition.position;
+            senseiObject.rotation = new Quaternion(0, 180, 0, 0);
+            SenseiAnimationManager.OnStartPointing.Invoke();
+            string[] _texts = new string[1] { textData.instruccionesJuego };
+            StartCoroutine(ShowText(_texts));
         }
     }
 }
