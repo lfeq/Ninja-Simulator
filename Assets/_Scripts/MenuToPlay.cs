@@ -11,7 +11,7 @@ public class MenuToPlay : MonoBehaviour
 
     public void CargarCreditos()
     {
-        SceneManager.LoadScene("Creditos");
+        SceneManager.LoadScene("Credits");
     }
 
     public void CargarMenu()
@@ -22,6 +22,11 @@ public class MenuToPlay : MonoBehaviour
     public void CargarMenu2()
     {
         StartCoroutine(CambiarEscenaDespuesDeSEgundos());   
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     IEnumerator CambiarEscenaDespuesDeSEgundos()

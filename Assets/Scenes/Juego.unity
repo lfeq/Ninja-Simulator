@@ -36008,11 +36008,90 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61d25301d2f0c53459a32d8e1348275c, type: 3}
---- !u!198 &1338560623 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3623056147813107480, guid: 0331b169005eb1d469455efaa6b9024a,
+--- !u!1001 &1338573590
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1998817536}
+    m_Modifications:
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2799997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3623056147390423487, guid: 8feea1782c63f61409f3092370bc735b,
+        type: 3}
+      propertyPath: m_Name
+      value: SmokeParticle (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8feea1782c63f61409f3092370bc735b, type: 3}
+--- !u!4 &1338573591 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3623056147390423484, guid: 8feea1782c63f61409f3092370bc735b,
     type: 3}
-  m_PrefabInstance: {fileID: 1727706824}
+  m_PrefabInstance: {fileID: 1338573590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1338573594 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3623056147390423485, guid: 8feea1782c63f61409f3092370bc735b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1338573590}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1339800638 stripped
 Transform:
@@ -42027,6 +42106,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1978343219}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a44829d214c5b543b952975ba3dd479,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1338573591}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a44829d214c5b543b952975ba3dd479,
         type: 3}
@@ -52365,7 +52448,7 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1338560623}
+      - m_Target: {fileID: 1338573594}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Play
         m_Mode: 1
