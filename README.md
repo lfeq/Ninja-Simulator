@@ -16,6 +16,6 @@ Valentina García
 
 ### Play build
 
-Download [build](https://www.example.com](https://oopolo.itch.io/ninja-simulator) and [install](https://www.techradar.com/how-to/how-to-sideload-apps-onto-the-oculus-quest-2).
+Download [build](https://oopolo.itch.io/ninja-simulator) and [install](https://www.techradar.com/how-to/how-to-sideload-apps-onto-the-oculus-quest-2).
 
 Good Luck and Have Fun!!!
