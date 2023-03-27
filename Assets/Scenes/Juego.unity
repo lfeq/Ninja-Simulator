@@ -21033,7 +21033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23585976a9c41d041b5f575470c831a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToEndTutorial: 10
+  hitsToEndTutorial: 6
   senseiObject: {fileID: 1998817536}
   senseiNewPosition: {fileID: 2137227023}
   senseiText: {fileID: 1185660638}
