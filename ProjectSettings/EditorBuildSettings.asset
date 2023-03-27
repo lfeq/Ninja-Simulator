@@ -6,10 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 13cf9c1c039122e40b42c419832e5862
+  - enabled: 1
+    path: Assets/Scenes/Juego.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/TestScenes/LorenzTestScene.unity
+    guid: d8b5e54c5a8e1f3489cb7f70a4a22ac7
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 8542855cc9c7b9944883c0d2042a579c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 38878d9f89998984b9cfea13380c4d9d,
+      type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: de722b9da1270224ab5dabdb4346613e,
+      type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 4e47305ecce152042b9129bd1a9b35e5,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: fc59f42a350b8cc49b639ad5cec2e2c5,
       type: 2}
