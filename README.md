@@ -5,9 +5,13 @@ VR prototype where you play as a ninja student that is learning how to throw shu
 ## Made by
 
 Daniel Peña
+
 David Martinez
+
 Lorenz Equihua
+
 Sebastian Irriberri
+
 Valentina García
 
 ### Play build
